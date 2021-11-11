@@ -4,42 +4,22 @@ import React from 'react';
 
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
+
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import Avatar from '@mui/material/Avatar';
-import IconButton from '@mui/material/IconButton';
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import FolderIcon from '@mui/icons-material/Folder';
-import DeleteIcon from '@mui/icons-material/Delete';
-import { styled } from '@mui/material/styles';
-
-
-function generate(element) {
-    return [0, 1, 2].map((value) =>
-        React.cloneElement(element, {
-            key: value,
-        }),
-    );
-}
-
+import FacebookIcon from '@mui/icons-material/Facebook';
+import AddIcCallOutlinedIcon from '@mui/icons-material/AddIcCallOutlined';
+import AddLocationAltRoundedIcon from '@mui/icons-material/AddLocationAltRounded';
 
 const Footer = () => {
-    // // const Demo = styled('div')(({ theme }) => ({
-    //     backgroundColor: theme.palette.background.paper,
-    // }));
-    // // const [dense, setDense] = React.useState(false);
-    // // const [secondary, setSecondary] = React.useState(false);
-
+   
     return (
-        <Box style={{ height: '250px', width: '100%', backgroundColor: '#111111', color: '#878787' }}>
+        <Box style={{ height: 'auto', width: '100%', backgroundColor: '#111111', color: '#878787' }}>
             <Container>
                 <Grid container spacing={2}>
                     <Grid item xs={12} sm={6} md={4}>
                         <Typography sx={{ textAlign: 'left' }} variant='h5' component='h2'>
-                            description
+                            Description
                         </Typography>
                         <Typography sx={{ textAlign: 'center' }} variant='body2' component='div'>
                             In our shop we sale various gaming chair.These chairs are vary comfortable.
@@ -56,15 +36,32 @@ const Footer = () => {
                             Contact Us
                         </Typography>
                         <List >
-                            <ListItem>
-                                <ListItemIcon>
-                                    <FolderIcon />
+                            <a style={{ textDecoration: 'none', color: '#878787' }} href='https://www.facebook.com/mohammad.sumon.399041'> <ListItem>
+                                <ListItemIcon style={{ color: '#878787' }}>
+                                    <FacebookIcon />
                                 </ListItemIcon>
                                 <ListItemText
-                                    primary="Single-line item"
-                                    
+                                    primary="Gaming Chair"
                                 />
                             </ListItem>
+                            </a>
+                            <ListItem>
+                                <ListItemIcon style={{ color: '#878787' }}>
+                                    <AddIcCallOutlinedIcon />
+                                </ListItemIcon>
+                                <ListItemText
+                                    primary="01700000000"
+                                />
+                            </ListItem>
+                            <a style={{ textDecoration: 'none', color: '#878787' }} href='https://www.facebook.com/mohammad.sumon.399041'> <ListItem>
+                                <ListItemIcon style={{ color: '#878787' }}>
+                                    <AddLocationAltRoundedIcon />
+                                </ListItemIcon>
+                                <ListItemText
+                                    primary="Motalab Plaza"
+                                />
+                            </ListItem>
+                            </a>
                         </List>
 
 
