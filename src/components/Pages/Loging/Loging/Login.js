@@ -6,7 +6,7 @@ import { Link} from 'react-router-dom';
 import { Box } from '@mui/system';
 import useAuth from '../../../../hooks/useAuth';
 const Login = () => {
-    const { SignIn,user} = useAuth();
+    const { SignIn} = useAuth();
     const [logInData, setLogInData] = useState({});
     const history = useHistory()
     const location = useLocation()

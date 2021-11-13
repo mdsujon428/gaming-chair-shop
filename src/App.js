@@ -9,7 +9,6 @@ import Login from './components/Pages/Loging/Loging/Login';
 import PrivateRoute from './components/Pages/Loging/PrivateRoute/PrivateRoute'
 import Register from './components/Pages/Loging/Register/Register';
 import Purchase from './components/Pages/Purchase/Purchase';
-import Footer from './components/Pages/Shared/Footer/Footer';
 import Navigation from './components/Pages/Shared/Navigation/Navigation';
 import AuthProvider from './context/AuthProvider/AuthProvider';
 
