@@ -85,7 +85,7 @@ const useFirebase = () => {
     //Function to POST/UPDATE user data to Database of user collection.
     const saveData=(email,name,method)=>{
           const newUser={email:email,displayName:name}
-          fetch(`http://localhost:7000/users`,{
+          fetch(`https://sheltered-shore-72007.herokuapp.com/users`,{
               method:method,
               headers:{
                   'content-type':'application/json'

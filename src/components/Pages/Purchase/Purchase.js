@@ -11,7 +11,7 @@ const Purchase = () => {
     const [product, setProduct] = useState({})
     const { id } = useParams();
     useEffect(() => {
-        const url = `http://localhost:7000/product/${id}`;
+        const url = `https://sheltered-shore-72007.herokuapp.com/product/${id}`;
         fetch(url)
             .then((res) => res.json())
             .then(data => setProduct(data))

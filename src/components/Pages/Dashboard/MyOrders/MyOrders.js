@@ -15,7 +15,7 @@ const MyOrders = ({ email }) => {
     const [myOrders, setMyOrders] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:7000/myOrders/${email}`)
+        fetch(`https://sheltered-shore-72007.herokuapp.com/myOrders/${email}`)
             .then(res => res.json())
             .then(data => setMyOrders(data))
             .catch(() => console.log('Something went wrong'))
@@ -23,7 +23,7 @@ const MyOrders = ({ email }) => {
     const handleDeleteProduct = (id) => {
         const confirm = window.confirm("Are You sure,You want to cancel this order");
         if (confirm) {
-            fetch(`http://localhost:7000/myOrders/${id}`, {
+            fetch(`https://sheltered-shore-72007.herokuapp.com/myOrders/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'content-type': 'application/json'
