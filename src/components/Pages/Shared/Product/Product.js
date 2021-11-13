@@ -6,10 +6,11 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-const Product = ({ product }) => {
-    const {name,img,description,price} = product;
+import { NavLink } from 'react-router-dom';
+const Product = ({ product ,purchase}) => {
+    const {_id,name,img,description,price} = product;
     return (
-        <Grid item xs={12} md={4} sm={6}>
+        
             <Card sx={{ maxWidth: 345 ,m:'4px,0'}}>
                 <CardMedia
                     sx={{height:'auto',width:'200px',m:'0 auto'}}
@@ -30,10 +31,10 @@ const Product = ({ product }) => {
                 </CardContent>
                 <CardActions>
                     
-                    <Button size="small">Buy Now</Button>
+                    {purchase ? '' : <NavLink style={{textDecoration:'none'}} to={`/explore/purchase/${_id}`}> <Button >Buy Now</Button> </NavLink>}
                 </CardActions>
             </Card>
-        </Grid>
+        
     );
 };
 

@@ -11,12 +11,12 @@ const Products = () => {
             .then(data => setProducts(data))
     }, [])
     return (
-        <Container sx={{m:'5px auto'}}>
+        <Container sx={{ m: '10px auto' }}>
             <Box>
                 <Grid container spacing={2}>
-                    {
-                        products.map(product => <Product key={product._id} product={product} />)
-                    }
+                    {products.map(product => <Grid key={product._id} item xs={12} sm={12} md={4}>
+                        <Product  product={product} purchase={''}/>
+                    </Grid>)}
                 </Grid>
             </Box>
         </Container>
