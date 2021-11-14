@@ -10,7 +10,6 @@ const Login = () => {
     const [logInData, setLogInData] = useState({});
     const history = useHistory()
     const location = useLocation()
-    console.log(location)
     const handleOnBlur = (e) => {
         e.preventDefault()
         const field = e.target.name;

@@ -28,7 +28,6 @@ const Register = () => {
         e.target.reset()
        
     }
-    console.log(user.email)
     return (
         <Box style={{ textAlign: 'center', margin: '10px 0' }} sx={{ display: 'flex', justifyContent: 'center' }}>
 

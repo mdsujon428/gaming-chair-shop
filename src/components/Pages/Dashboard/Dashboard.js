@@ -1,6 +1,6 @@
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
-import { Box} from '@mui/material';
+import { Box } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
@@ -27,14 +27,19 @@ import {
 import MyOrders from './MyOrders/MyOrders';
 import Review from './Review/Review';
 import Pay from './Pay/Pay';
+import ManageAllOrders from './Admin/ManageAllOrders/ManageAllOrders';
+import AddProduct from './Admin/AddProduct/AddProduct';
+import ManageProducts from './Admin/ManageProducts/ManageProducts';
+import MakeAdmin from './Admin/MakeAdmin/MakeAdmin';
+import AdminRoute from './Admin/AdminRoute/AdminRoute'
 
 
 const drawerWidth = 240;
 
 
 function Dashboard(props) {
-    const { user, Logout } = useAuth();
-    let { path, url } = useRouteMatch();
+    const { user, Logout,isAdmin} = useAuth();
+    let { path, url, } = useRouteMatch();
 
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -42,12 +47,11 @@ function Dashboard(props) {
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
-
     const drawer = (
         <div>
             <Toolbar />
             <Divider />
-            <List>
+            {!isAdmin ? (<List>
                 <NavLink to={`${url}/myOrders`} style={{ textDecoration: 'none', color: '#000000' }} >
                     <ListItem button >
                         <ListItemIcon>
@@ -78,9 +82,52 @@ function Dashboard(props) {
                     </ListItemIcon>
                     <ListItemText primary={'Logout'} />
                 </ListItem>
-            </List>
+            </List>)
+                :
+                (<List>
+                    <NavLink to={`${url}/manageAllOrders`} style={{ textDecoration: 'none', color: '#000000' }} >
+                        <ListItem button >
+                            <ListItemIcon>
+                                <PersonOutlineOutlinedIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={'Manage All Orders'} />
+                        </ListItem>
+                    </NavLink>
+                    <NavLink to={`${url}/addProducts`} style={{ textDecoration: 'none', color: '#000000' }} >
+                        <ListItem button>
+                            <ListItemIcon>
+                                <VisibilityOutlinedIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={'Add Products'} />
+                        </ListItem>
+                    </NavLink>
+                    <NavLink to={`${url}/manageProducts`} style={{ textDecoration: 'none', color: '#000000' }}>
+                        <ListItem button>
+                            <ListItemIcon>
+                                <PaymentOutlinedIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={'Manage Products'} />
+                        </ListItem>
+                    </NavLink>
+                    <NavLink to={`${url}/makeAdmin`} style={{ textDecoration: 'none', color: '#000000' }}>
+                        <ListItem button>
+                            <ListItemIcon>
+                                <PaymentOutlinedIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={'Make Admin'} />
+                        </ListItem>
+                    </NavLink>
+                    <ListItem button onClick={Logout}>
+                        <ListItemIcon>
+                            <LoginOutlinedIcon />
+                        </ListItemIcon>
+                        <ListItemText primary={'Logout'} />
+                    </ListItem>
+                </List>)
+            }
+
             <Divider />
-             
+
         </div>
     );
 
@@ -150,17 +197,29 @@ function Dashboard(props) {
                 <Toolbar />
                 <Switch>
                     <Route exact path={`${path}/`}>
-                        <MyOrders email={user.email}/>
+                        <Dashboard/>
                     </Route>
                     <Route exact path={`${path}/myOrders`}>
-                        <MyOrders email={user.email}/>
+                        <MyOrders email={user.email} />
                     </Route>
                     <Route exact path={`${path}/review`}>
-                        <Review/>
+                        <Review />
                     </Route>
                     <Route path={`${path}/pay`}>
-                        <Pay/>
+                        <Pay />
                     </Route>
+                    <AdminRoute path={`${path}/manageAllOrders`}>
+                        <ManageAllOrders />
+                    </AdminRoute>
+                    <AdminRoute path={`${path}/addProducts`}>
+                        <AddProduct />
+                    </AdminRoute>
+                    <AdminRoute path={`${path}/manageProducts`}>
+                        <ManageProducts/>
+                    </AdminRoute>
+                    <AdminRoute path={`${path}/makeAdmin`}>
+                        <MakeAdmin />
+                    </AdminRoute>
                 </Switch>
             </Box>
         </Box>

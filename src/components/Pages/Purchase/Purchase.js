@@ -49,6 +49,7 @@ const Purchase = () => {
         .catch(()=>{
             console.log("Something went wrong")
         })
+        
         e.target.reset()
         e.preventDefault()
     }

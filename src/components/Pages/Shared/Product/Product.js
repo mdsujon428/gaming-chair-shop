@@ -8,8 +8,7 @@ import Typography from '@mui/material/Typography';
 import { NavLink } from 'react-router-dom';
 const Product = ({ product ,purchase}) => {
     const {_id,name,img,description,price} = product;
-    return (
-        
+    return ( 
             <Card sx={{ maxWidth: 345 ,m:'4px,0'}}>
                 <CardMedia
                     sx={{height:'auto',width:'200px',m:'0 auto'}}
@@ -32,8 +31,7 @@ const Product = ({ product ,purchase}) => {
                     
                     {purchase ? '' : <NavLink style={{textDecoration:'none'}} to={`/explore/purchase/${_id}`}> <Button >Buy Now</Button> </NavLink>}
                 </CardActions>
-            </Card>
-        
+            </Card>        
     );
 };
 

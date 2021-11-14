@@ -7,7 +7,7 @@ initializeAuthentication()
 
 const useFirebase = () => {
     const [user, setUser] = useState({})
-    
+    const [isAdmin,setIsAdmin] = useState(false)
     // console.log(user.displayName)
     const [error,setError] = useState('')
     const [success,setSuccess] = useState('')
@@ -20,7 +20,7 @@ const useFirebase = () => {
             .then(userCredential => {
                 const newUser ={email:email,displayName:name} 
                 setUser(newUser);
-                
+                setSuccess('Register Successfully')
                 //Store data to database.
                 saveData(email,name,'POST')
                 setError('')
@@ -65,11 +65,13 @@ const useFirebase = () => {
         .then(userCredential=>{
             const user = userCredential.user;
             setUser(user)
+            setSuccess("SigIn Successfully")
             history.push( location.state?.from || '/')
         })
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
+            setError(errorMessage, " ",errorCode)
           });
     }
 
@@ -77,11 +79,21 @@ const useFirebase = () => {
         signOut(auth)
         .then(()=>{
             setUser({})
+            
         })
         .catch(()=>{
             // console.log()
         })
     }
+    //Observer user is admin or not
+    useEffect(()=>{
+        fetch(`https://sheltered-shore-72007.herokuapp.com/users/${user?.email}`)
+        .then(res=> res.json())
+        .then(data => setIsAdmin(data.admin))
+        .catch(()=>{
+            setError('Something went wrong user is not admin.')
+        })
+    },[user?.email])
     //Function to POST/UPDATE user data to Database of user collection.
     const saveData=(email,name,method)=>{
           const newUser={email:email,displayName:name}
@@ -99,7 +111,8 @@ const useFirebase = () => {
         SignIn,
         Logout,
         error,
-        success
+        success,
+        isAdmin
     }
 
 }

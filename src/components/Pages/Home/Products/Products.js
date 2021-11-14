@@ -14,7 +14,7 @@ const Products = () => {
         <Container sx={{ m: '10px auto' }}>
             <Box>
                 <Grid container spacing={2}>
-                    {products.map(product => <Grid key={product._id} item xs={12} sm={12} md={4}>
+                    {products.map(product => <Grid key={product._id} item xs={12} sm={6} md={4}>
                         <Product  product={product} purchase={''}/>
                     </Grid>)}
                 </Grid>

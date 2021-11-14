@@ -8,7 +8,6 @@ import useAuth from '../../../../hooks/useAuth';
 const Review = () => {
     const { user } = useAuth()
     const [review, setReview] = React.useState({});
-    console.log(user)
 
     const { displayName, email } = user;
     const handleOnBlur = (e) => {
@@ -23,7 +22,7 @@ const Review = () => {
     }
     const handReviewSubmit = (e) => {
 
-        fetch(`http://localhost:7000/review`, {
+        fetch(`https://sheltered-shore-72007.herokuapp.com/review`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
