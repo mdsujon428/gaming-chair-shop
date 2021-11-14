@@ -13,13 +13,14 @@ import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined
 
 const MyOrders = ({ email }) => {
     const [myOrders, setMyOrders] = useState([])
-
+    // to get all orders of a user.
     useEffect(() => {
         fetch(`https://sheltered-shore-72007.herokuapp.com/myOrders/${email}`)
             .then(res => res.json())
             .then(data => setMyOrders(data))
             .catch(() => console.log('Something went wrong'))
     }, [])
+    
     const handleDeleteProduct = (id) => {
         const confirm = window.confirm("Are You sure,You want to cancel this order");
         if (confirm) {

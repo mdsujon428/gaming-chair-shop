@@ -33,7 +33,7 @@ const Purchase = () => {
 
     const handlePurchaseSubmit = (e) => {
         
-        fetch('http://localhost:7000/myOrders',{
+        fetch('https://sheltered-shore-72007.herokuapp.com/myOrders',{
             method:'POST',
             headers:{
                 'content-type':'application/json'
